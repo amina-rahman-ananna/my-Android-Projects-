@@ -36,6 +36,12 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileAdapter.ProfileA
         holder.tvText.setText(profileInfos.get(position).getText());
     }
 
+
+    public void add(ProfileInfo profileInfo, int position){
+        profileInfos.add(profileInfo);
+        notifyItemInserted(position);
+    }
+
     @Override
     public int getItemCount() {
         return profileInfos.size();

@@ -9,12 +9,23 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.fujitsu.recycleviewtest.MainActivity"
     tools:showIn="@layout/activity_main">
-    <EditText
-        android:id="@+id/etContryName"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Country Name"
-        />
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/etContryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter Country Name"
+            />
+
+        <Button
+            android:id="@+id/btAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"/>
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvProfileList"
         android:layout_width="match_parent"

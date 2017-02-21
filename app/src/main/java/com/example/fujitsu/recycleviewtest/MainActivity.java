@@ -10,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ProfileAdapter profileAdapter;
     ArrayList<ProfileInfo> profileInfos = new ArrayList<>();
     EditText editText;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,17 +35,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initviews() {
+
+
         //fab
         fab = (FloatingActionButton) findViewById(R.id.fab);
         //recycleview jhjhjhj
         recyclerView = (RecyclerView) findViewById(R.id.rvProfileList);
         //demo profiles create
-        createProfies();
         //adapter
         profileAdapter = new ProfileAdapter(profileInfos);
 
         //edittext jjjjj
         editText = (EditText) findViewById(R.id.etContryName);
+
+        button = (Button) findViewById(R.id.btAdd);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         initlistener();
         setupAdapter();
     }
@@ -53,8 +60,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutmanager);
         recyclerView.setAdapter(profileAdapter);
     }
+
+
+
+
     //demo  profile createion
-    private void createProfies() {
+    /*private void createProfies() {
         String[] disName = new String[]{"Rajshai", "Dhaka", "Khulna"};
         for(int i = 0; i < disName.length ;i++){
             ProfileInfo profileInfo = new ProfileInfo();
@@ -62,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             profileInfo.setName(disName[i]);
             profileInfos.add(profileInfo);
         }
-    }
+    }*/
 
     private void initlistener() {
         fab.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +81,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ProfileInfo  profileInfo = new ProfileInfo();
+                profileInfo.setName(editText.getText().toString());
+                if(profileAdapter.getItemCount() > 1){
+                    profileAdapter.add(profileInfo,profileAdapter.getItemCount()-1);
+                }else{
+                    profileAdapter.add(profileInfo,0);
+                }
+
+                editText.setText("");
             }
         });
     }
