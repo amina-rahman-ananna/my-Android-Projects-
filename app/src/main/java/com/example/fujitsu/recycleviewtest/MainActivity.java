@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         //adapter
         profileAdapter = new ProfileAdapter(profileInfos);
 
-        //edittext
+        //edittext jjjjj
         editText = (EditText) findViewById(R.id.etContryName);
         initlistener();
         setupAdapter();
