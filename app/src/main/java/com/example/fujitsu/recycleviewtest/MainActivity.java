@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private void initviews() {
         //fab
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        //recycleview
+        //recycleview jhjhjhj
         recyclerView = (RecyclerView) findViewById(R.id.rvProfileList);
         //demo profiles create
         createProfies();
